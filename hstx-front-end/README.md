@@ -1,4 +1,4 @@
-<h1>AKC - High Secure Transaction Samples</h1>
+# Akachain - High Secure Transaction Samples ⌁ hstx-front-end
 
 <h2>Quick Start</h2>
 
