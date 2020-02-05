@@ -61,9 +61,9 @@ typings/
 .next
 
 # akachain artifacts
-./artifacts/src
-./artifacts/network-config.yaml
-./certs/
-./crypto-config/
-./crypto-path/
-./crypto-store/
+/artifacts/src
+/artifacts/network-config.yaml
+/certs/
+/crypto-config/
+/crypto-path/
+/crypto-store/
