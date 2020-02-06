@@ -1,7 +1,7 @@
 const express = require('express');
-const u2f = require('u2f')
-
 const HSTx = require('@akachain/hstx-node-sdk');
+
+const u2f = require('../utils/u2f/index')
 
 /**
  * A class to initialize router instance

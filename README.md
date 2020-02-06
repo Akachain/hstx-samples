@@ -1,4 +1,4 @@
-# Akachain - High Secure Transaction samples
+# Akachain - High Secure Transaction Samples
 Sample applications for implementing [hstx-node-sdk](https://github.com/Akachain/akc-node-sdk).
 
 This project includes __hstx-front-end__, __hstx-dapp__, __hstx-chaincode__ projects.
@@ -41,22 +41,45 @@ npm run build
 ### 2. hstx-dapp
 Nodejs Appplication
 
-Go to directory
+__Go to directory__
 ```js
 cd hstx-dapp
 ```
 
-Install dependencies
+__Grant access permission for registry https://npm.pkg.github.com/__
+
+Create file .npmrc
+
+```js
+// Linux/MacOS command
+touch .npmrc
+```
+Config registry to install akaChain SDK
+```js
+// Linux/MacOS command
+echo "registry=https://npm.pkg.github.com/Akachain" >> .npmrc
+```
+Get your personal access token on github:
+Access to [gibhub](https://github.com), choose [settings](https://github.com/settings/profile) at right-top of page. Click on _Developer settings_, _Personal access tokens_ then generate your token. Copy it to replace your_token in the following command
+```js
+// Linux/MacOS command
+echo "//npm.pkg.github.com/:_authToken=your_token"
+```
+
+__Install dependencies__
 ```js
 npm install
 ```
 
-Create and config _env_ (enviroment variables)
-- Create file .env in the root of this project
-- Copy content of .env.example to .env file
-- Config env variables as you want
+__Create and config _env_ (enviroment variables)__
 
-Run in develop mode, application will be running at port 8080
+Create file .env in the root of this project
+
+Copy content of .env.example to .env file
+
+Config env variables as you want
+
+__Run in develop mode, application will be running at port 8080__
 ```js
 npm start
 ```

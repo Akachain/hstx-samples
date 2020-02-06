@@ -1,4 +1,4 @@
-# Akachain High Secure Transaction
+# Akachain - High Secure Transaction Samples ⌁ hstx-chaincode
 Chaincode (Smart Contract)
 
 ## Prerequisites
