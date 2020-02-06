@@ -39,3 +39,15 @@
     ```js
     npm start
     ```
+
+## APIs
+| APIs                   | Parameters                                                                                                            | Note |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------|------|
+| /CreateSuperAdmin      | { SuperAdminID: string, Name: string, PublicKey: string }                                                             |      |
+| /UpdateSuperAdmin      | { SuperAdminID: string, Name: string, PublicKey: string, Status: string }                                             |      |
+| /GetSuperAdminByID/:id | id: string                                                                                                            |      |
+| /CreateProposal        | { Message: string, CreatedBy: string }                                                                                |      |
+| /UpdateProposal        | { ProposalID: string, Message: string, CreatedBy: string, Status: string }                                            |      |
+| /CreateApproval        | { ProposalID: string, ApproverID: string, Challenge: string, Signature: string, Message: string, Status: string }     |      |
+| /UpdateApproval        | { ApprovalID: string, ProposalID: string, ApproverID: string, Challenge: string, Signature: string ,Message: string } |      |
+| /CommitProposal        | { ProposalID: string }                                                                                                |      |
