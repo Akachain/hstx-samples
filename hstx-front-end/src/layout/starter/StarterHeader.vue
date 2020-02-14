@@ -40,6 +40,9 @@
                 </div>
             </ul>
         </base-nav>
+        <div>
+            <i>Hello {{user}}</i>
+        </div>
     </header>
 </template>
 <script>
@@ -52,6 +55,19 @@ export default {
     BaseNav,
     CloseButton,
     BaseDropdown
+  },
+  data() {
+      return {
+          user: null
+      }
+  },
+  created() {
+      try {
+        this.user = JSON.parse(localStorage.getItem('user'))
+      } catch(err) {
+          console.log(err.message)
+      }
+      console.log(user)
   }
 };
 </script>

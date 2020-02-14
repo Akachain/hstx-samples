@@ -15,9 +15,6 @@
         <div class="container">
             <card shadow class="card-profile mt--500" no-body>
                 <div class="px-4">
-                    <div class="d-flex justify-content-center position-absolute" id="loading">
-                        <sync-loader :loading="loading" :color="'green'" :size="'8px'"></sync-loader>
-                    </div>
                     <div class="text-center my-5">
                         <h3 class="text-success font-weight-bold">HOW TO USE</h3>
                     </div>

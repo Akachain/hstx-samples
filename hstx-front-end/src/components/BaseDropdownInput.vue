@@ -1,6 +1,7 @@
 <template>
-    <div class="form-group"
-         :class="[
+  <div
+    class="form-group"
+    :class="[
        {'input-group': hasIcon},
        {'has-danger': error},
        {'focused': focused},
@@ -8,50 +9,56 @@
        {'has-label': label || $slots.label},
        {'has-success': valid === true},
        {'has-danger': valid === false}
-       ]">
-        <slot name="label">
-            <label v-if="label" :class="labelClasses">
-                {{label}}
-                <span v-if="required">*</span>
-            </label>
-        </slot>
+       ]"
+  >
+    <slot name="label">
+      <label v-if="label" :class="labelClasses">
+        {{label}}
+        <span v-if="required">*</span>
+      </label>
+    </slot>
 
-
-        <div v-if="addonLeftIcon || $slots.addonLeft" class="input-group-prepend">
-        <span class="input-group-text">
-          <slot name="addonLeft">
-            <i :class="addonLeftIcon"></i>
-          </slot>
-        </span>
-        </div>
-        <slot v-bind="slotData">
-            <input
-                    :value="value"
-                    v-on="listeners"
-                    v-bind="$attrs"
-                    class="form-control"
-                    :class="[{'is-valid': valid === true}, {'is-invalid': valid === false}, inputClasses]"
-                    aria-describedby="addon-right addon-left">
+    <div v-if="addonLeftIcon || $slots.addonLeft" class="input-group-prepend">
+      <span class="input-group-text">
+        <slot name="addonLeft">
+          <i :class="addonLeftIcon"></i>
         </slot>
-        <div v-if="addonRightIcon || $slots.addonRight" class="input-group-append">
-          <span class="input-group-text">
-              <slot name="addonRight">
-                  <i :class="addonRightIcon"></i>
-              </slot>
-          </span>
-        </div>
-        <slot name="infoBlock"></slot>
-        <slot name="helpBlock">
-            <div class="text-danger invalid-feedback" style="display: block;" :class="{'mt-2': hasIcon}" v-if="error">
-                {{ error }}
-            </div>
-        </slot>
+      </span>
     </div>
+    <slot v-bind="slotData">
+      <select
+        :value="value"
+        v-on="listeners"
+        v-bind="$attrs"
+        class="form-control"
+        aria-describedby="addon-right addon-left"
+      >
+        <option disabled value>Please select one</option>
+        <option v-for="(item, index) in list" v-bind:key="index">{{item}}</option>
+      </select>
+    </slot>
+    <div v-if="addonRightIcon || $slots.addonRight" class="input-group-append">
+      <span class="input-group-text">
+        <slot name="addonRight">
+          <i :class="addonRightIcon"></i>
+        </slot>
+      </span>
+    </div>
+    <slot name="infoBlock"></slot>
+    <slot name="helpBlock">
+      <div
+        class="text-danger invalid-feedback"
+        style="display: block;"
+        :class="{'mt-2': hasIcon}"
+        v-if="error"
+      >{{ error }}</div>
+    </slot>
+  </div>
 </template>
 <script>
 export default {
   inheritAttrs: false,
-  name: "base-input",
+  name: "base-dropdown-input",
   props: {
     required: {
       type: Boolean,
@@ -93,6 +100,10 @@ export default {
     addonLeftIcon: {
       type: String,
       description: "Addont left icon"
+    },
+    list: {
+      type: Array,
+      description: "List value"
     }
   },
   data() {
@@ -138,12 +149,29 @@ export default {
       this.focused = false;
       this.$emit("blur", value);
     }
+  },
+  watch: {
+    value: function (value) {
+      this.$emit("input", value);
+    }
   }
 };
 </script>
-<style>
-.invalid-feedback {
-  padding-left: 15px;
-  font-style: italic;
+<style lang="scss" scoped>
+select {
+  border-radius: 0 !important;
+  border-collapse: separate; 
+  border-width: 0 !important;
+  padding-left: 0px;
+  background: transparent;
+  option {
+    padding-left: 0px;
+  }
+}
+.input-group {
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15);
+}
+.input-group-prepend > span{
+  border-width: 0 !important;
 }
 </style>

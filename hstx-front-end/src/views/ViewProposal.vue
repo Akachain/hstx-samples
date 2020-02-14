@@ -55,7 +55,7 @@
                                     <td>{{ index + 1 }}</td>
                                     <td class="hash">{{ proposal.ProposalID }}</td>
                                     <td>{{ proposal.Message }}</td>
-                                    <td :class="[proposal.Status == 'Approved' ? 'text-success' : '', proposal.Status == 'Rejected' ? 'text-danger' : '', proposal.Status == 'Pending' ? 'text-info' : '']">{{ proposal.Status }}</td>
+                                    <td :class="[proposal.Status == 'Committed' ? 'text-warning' : '', proposal.Status == 'Approved' ? 'text-success' : '', proposal.Status == 'Rejected' ? 'text-danger' : '', proposal.Status == 'Pending' ? 'text-info' : '']">{{ proposal.Status }}</td>
                                     <td>
                                         <base-button class="btn-1" outline type="info" :disabled="proposal.Status == 'Committed'" @click="commit(index)">Commit</base-button>
                                     </td>
@@ -132,7 +132,7 @@ export default {
                     a.filter
 
                     let count = this.proposalList.filter(function (ele) {
-                        return ele.Status == "Approved"
+                        return ele.Status == "Approved" || ele.Status == "Committed"
                     })
                     this.numberOfApproved = count.length
 
