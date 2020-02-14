@@ -22,14 +22,14 @@
     "vue-spinner": "^1.0.3",
     "vue-sweetalert2": "^2.1.0",
     "vue2-transitions": "^0.2.3",
-    "yarn": ">=1.17.3"
+    "yarn": "^1.16.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-plugin-pwa": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.6"
   }
