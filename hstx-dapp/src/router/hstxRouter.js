@@ -13,7 +13,7 @@ class Router {
       this.router = express.Router();
       this.hstx = new HSTx(process.env.PEER, process.env.CHANNEL_NAME, process.env.CHAINCODE, process.env.ORG_NAME, process.env.USER_NAME);
       this._setRoutes()
-    } catch(err) {
+    } catch (err) {
       logger.error(err.message)
     }
   }
@@ -77,11 +77,15 @@ class Router {
       // Invoke to chaincode by 'func'
       let payload = await hstxFunc(args)
 
-      // Response success to client
-      res.send({
-        status: 200,
-        payload: payload
-      });
+      if (payload.Result.Status == 200) {
+        // Response success to client
+        res.send({
+          status: 200,
+          payload: payload
+        });
+      } else {
+        throw new Error(payload.Message)
+      }
     } catch (err) {
       logger.error(err.message)
       // Response error to client
@@ -107,7 +111,12 @@ class Router {
     try {
       // Query to chaincode by 'hstxFunc'
       let result = await hstxFunc(args)
-      let obj = JSON.parse(result);
+      let obj
+      try {
+        obj = JSON.parse(result);
+      } catch (err) {
+        throw new Error(result)
+      }
 
       // Response success to client
       res.send({
@@ -380,7 +389,7 @@ class Router {
         ApproverID: keyHandle,
         Challenge: req.body.Challenge,
         Signature: signature.toString('base64'),
-        Message:  signatureBase.toString('base64'),
+        Message: signatureBase.toString('base64'),
         Status: req.body.Status,
         CreatedAt: new Date()
       }

@@ -13,7 +13,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@akachain/hstx-node-sdk": "^1.0.3",
+    "@akachain/hstx-node-sdk": "^1.0.4",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
