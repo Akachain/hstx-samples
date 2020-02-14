@@ -14,7 +14,7 @@ import Guide from "./views/Guide.vue";
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
   linkExactActiveClass: "active",
   routes: [{
       path: "/",
@@ -45,8 +45,12 @@ export default new Router({
         header: AppHeader,
         default: CreateProposal,
         footer: AppFooter
+      },
+      meta: {
+        requiresAuth: true,
+        isSuperAdmin: false
       }
-    }, 
+    },
     {
       path: "/proposal/view",
       name: "viewProposal",
@@ -63,6 +67,10 @@ export default new Router({
         header: AppHeader,
         default: Quorum,
         footer: AppFooter
+      },
+      meta: {
+        requiresAuth: true,
+        isSuperAdmin: true
       }
     },
     {
@@ -116,3 +124,31 @@ export default new Router({
     }
   }
 });
+
+router.beforeEach((to, from, next) => {
+  const freePages = ['home', 'guide', 'temp', 'components', 'login', 'register', 'viewProposal']
+  if (freePages.includes(to.name)) { // Free pages
+    next()
+  } else if (to.matched.some(record => record.meta.requiresAuth)) { // Auth pages
+    if (localStorage.getItem('user') == null) { // Not login, redirect to home
+      next({
+        path: '/home'
+      })
+    } else {
+      let user = JSON.parse(localStorage.getItem('user'))
+      if (to.matched.some(record => record.meta.isSuperAdmin)) { // Require Super Admin
+        if (user.SuperAdminID != null) {
+          next()
+        } else {
+          next({
+            name: 'viewProposal'
+          })
+        }
+      } else { // Not require Super Admin
+        next()
+      }
+    }
+  }
+})
+
+export default router

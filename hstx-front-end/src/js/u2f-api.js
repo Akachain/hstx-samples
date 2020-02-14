@@ -682,7 +682,7 @@ u2f.register = function(appId, registerRequests, registeredKeys, callback, opt_t
   } else {
     // We know the JS API version. Send the actual register request in the supported API version.
     u2f.sendRegisterRequest(appId, registerRequests, registeredKeys,
-        callback, opt_timeoutSeconds);
+        callback, `opt_timeoutSeconds`);
   }
 };
 

@@ -84,7 +84,6 @@ import {
     HEADER,
     URL_ALL_SUPER_ADMINS,
     URL_ALL_ADMINS,
-    URL_PROPOSAL_NOT_SIGN,
     URL_CREATE_QUORUM,
     URL_CREATE_REJECT,
     URL_CREATE_SUPER_ADMIN,
@@ -134,7 +133,7 @@ export default {
         async loadData() {
             try {
                 let rs = await axios.get(
-                    URL_PROPOSAL_NOT_SIGN + "/" + this.adminID,
+                    URL_ALL_SUPER_ADMINS + "/" + this.adminID,
                     HEADER
                 );
                 if (rs.status == 200) {

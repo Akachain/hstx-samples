@@ -3,6 +3,7 @@ import BaseAlert from "../components/BaseAlert";
 import BaseButton from "../components/BaseButton";
 import BaseCheckbox from "../components/BaseCheckbox";
 import BaseInput from "../components/BaseInput";
+import BaseDropdownInput from "../components/BaseDropdownInput";
 import BasePagination from "../components/BasePagination";
 import BaseProgress from "../components/BaseProgress";
 import BaseRadio from "../components/BaseRadio";
@@ -17,6 +18,7 @@ export default {
     Vue.component(BaseAlert.name, BaseAlert);
     Vue.component(BaseButton.name, BaseButton);
     Vue.component(BaseInput.name, BaseInput);
+    Vue.component(BaseDropdownInput.name, BaseDropdownInput);
     Vue.component(BaseCheckbox.name, BaseCheckbox);
     Vue.component(BasePagination.name, BasePagination);
     Vue.component(BaseProgress.name, BaseProgress);
