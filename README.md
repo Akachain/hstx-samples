@@ -1,5 +1,5 @@
 # Akachain - High Secure Transaction Samples
-Sample applications for implementing **[hstx-node-sdk](https://github.com/Akachain/akc-node-sdk)**.
+Sample applications for implementing **[hstx-node-sdk](https://github.com/Akachain/hstx-node-sdk)**.
 
 This project includes __hstx-front-end__, __hstx-dapp__ projects.
 
